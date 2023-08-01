@@ -1,0 +1,42 @@
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+	void search(char c1[50][50],int n);
+	int i,n;
+	char c1[50][50];
+	printf("Enter limit:");
+	scanf("%d",&n);
+	printf("\nEnter n city names:");
+	for(i=0;i<n;i++)
+	{
+		scanf("%s",&c1[i]);
+	}
+	search(c1,n);
+}
+void search(char c1[50][50],int n)
+{
+	int i,j,index;
+	char min[20],t[20];
+	for(i=0;i<n;i++)
+	{
+		strcpy(min,c1[i]);
+		index=i;
+		for(j=i;j<n;j++)
+		{
+			if(strcmp(c1[j],min)<0)
+			{
+				strcpy(min,c1[j]);
+				index=j;	
+			}
+		}
+		strcpy(t,c1[i]);
+		strcpy(c1[i],c1[index]);
+		strcpy(c1[index],t);
+	}
+	printf("\nsorted cities=");
+	for(i=0;i<n;i++)
+	{
+		printf("\n%s",c1[i]);
+	}
+}
