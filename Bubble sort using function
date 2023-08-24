@@ -1,0 +1,39 @@
+#include<stdio.h>
+void bubble(int a[],int n)
+{
+	int i,pass,t;
+for(pass=1;pass<n;pass++)
+	{
+		for(i=0;i<n-pass;i++)
+		{
+			if(a[i]>a[i+1])
+			{
+				t=a[i];
+				a[i]=a[i+1];
+				a[i+1]=t;
+			}
+		}
+	}
+}
+void display(int a[],int n)
+{
+	int i;
+	printf("\n BUBBLE SORTED NOS=");
+	for(i=0;i<n;i++)
+	{
+		printf("%d \t",a[i]);
+	}
+}
+int main()
+{
+	int a[40],i,n;
+	printf("enter limit:");
+	scanf("%d",&n);
+	printf("\nenter n no:");
+	for(i=0;i<n;i++)
+	{
+	 	scanf("%d",&a[i]);
+	}
+	bubble(a,n);
+	display(a,n);
+}
