@@ -1,0 +1,52 @@
+#include<stdio.h>
+#include<stdlib.h>
+void quick(int a[],int lb,int ub)
+{
+	int i,j,key,temp;
+	if(lb<ub)
+	{
+	i=lb+1;
+	key=a[lb];
+	j=ub;
+	while(i<=j)
+	{
+		if(a[i]<=key&&i<=ub)
+			i++;
+		if(a[j]>key&&j>=lb)
+			j--;
+		if(i<=j)
+		{
+			temp=a[i];
+			a[i]=a[j];
+			a[j]=temp;
+		}
+	}
+	temp=a[j];
+	a[j]=a[lb];
+	a[lb]=temp;
+	quick(a,lb,j-1); 
+	quick(a,j+1,ub);
+  }
+}
+int main()
+{
+	int a[20],i,n;
+	printf("enter limit:");
+	scanf("%d",&n);
+	for(i=0;i<n;i++)
+	{
+		a[i]=rand()%100;
+	}
+	printf("\noriginal array=");
+	for(i=0;i<n;i++)
+	{
+		printf("%d\t",a[i]);
+	}
+	quick(a,0,n-1);
+	
+	printf("\nsorted array=");
+	for(i=0;i<n;i++)
+	{
+		printf("%d\t",a[i]);
+	}
+}
